@@ -4,7 +4,7 @@ import 'package:clima_weather_app/utilities/constants.dart';
 import '../services/weather.dart';
 
 class LocationScreen extends StatefulWidget {
-  LocationScreen({this.locationWeather});
+  LocationScreen({super.key, this.locationWeather});
   var locationWeather;
 
   @override
@@ -21,16 +21,16 @@ class _LocationScreenState extends State<LocationScreen> {
   @override
   void initState() {
     super.initState();
-    UpdateUI(widget.locationWeather);
+    updateUI(widget.locationWeather);
   }
 
-  void UpdateUI(dynamic weatherData) {
-   double temp = weatherData['main']['temp'];
+  void updateUI(dynamic weatherData) {
+    double temp = weatherData['main']['temp'];
     temperature = temp.toInt();
-    weatherMessage=weather.getMessage(temperature);
-    print(weatherMessage);
-   var condition = weatherData['weather'][0]['id'];
-   weatherIcon = weather.getWeatherIcon(condition);
+    weatherMessage = weather.getMessage(temperature);
+
+    var condition = weatherData['weather'][0]['id'];
+    weatherIcon = weather.getWeatherIcon(condition);
     cityName = weatherData['name'];
 
     print(temperature);
